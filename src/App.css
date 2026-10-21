@@ -1,0 +1,47 @@
+/* ==========================================================================
+   ESTILOS GLOBALES - ECUAAUTO CHEVROLET (RESET & VARIABLES)
+   ========================================================================== */
+
+/* Definición de la paleta oficial de colores corporativos */
+:root {
+  --primary-blue: #0077C8;      /* Azul principal Chevrolet */
+  --dark-blue: #003b70;         /* Azul oscuro tipográfico */
+  --secondary-yellow: #FFCC00;  /* Amarillo secundario Chevrolet */
+  --bg-light: #f8fafc;          /* Gris claro institucional */
+  --text-dark: #1e293b;         /* Gris carbón para máxima legibilidad */
+  --text-muted: #64748b;        /* Gris suavizado para descripciones */
+}
+
+/* Reset básico para unificar el comportamiento de los navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía limpia y moderna */
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Evita que la pantalla baile hacia los lados en móviles */
+  background-color: #ffffff;
+  color: var(--text-dark);
+  scroll-behavior: smooth; /* Hace que el salto entre secciones sea fluido */
+}
+
+/* Configuración global para imágenes dentro de componentes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Resets globales para elementos interactivos comunes */
+button {
+  font-family: inherit;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

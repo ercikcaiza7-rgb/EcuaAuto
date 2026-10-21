@@ -1,0 +1,216 @@
+.navbar-wrapper {
+  position: relative;
+  height: 91px;
+}
+
+/* Contenedor principal de la barra */
+.navbar-container {
+  background: linear-gradient(90deg, #0077C8 0%, #005fa3 100%);
+  padding: 0.5rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Contenedor del logotipo corporativo */
+.navbar-logo-wrapper {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  padding: 2px 0;
+}
+
+/* Imagen del logotipo con transiciones suaves */
+.navbar-logo-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.3s ease;
+}
+
+/* UX: Efecto al pasar el mouse sobre el logo */
+.navbar-logo-img:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2)) brightness(1.05);
+}
+
+/* Contenedor de la lista de enlaces */
+.navbar-menu {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+/* Cada ítem o botón del menú */
+.navbar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  padding: 0.6rem 0;
+  position: relative;
+}
+
+/* Texto de los enlaces del menú */
+.navbar-text {
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  opacity: 0.88;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+/* Icono de la flecha del desplegable */
+.navbar-arrow {
+  font-size: 0.65rem;
+  color: #FFFFFF;
+  opacity: 0.6;
+  transform: scaleY(0.85);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* --- EFECTOS HOVER DE LOS ENLACES --- */
+.navbar-item:hover .navbar-text {
+  opacity: 1;
+}
+
+.navbar-item:hover .navbar-arrow {
+  opacity: 1;
+  transform: scaleY(0.85) translateY(1px);
+}
+
+/* Línea animada inferior (Por defecto oculta en el centro) */
+.navbar-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #FFCC00;
+  transition: width 0.35s ease, left 0.35s ease;
+}
+
+/* Despliega la línea al hacer hover */
+.navbar-item:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* --- SOLUCIÓN ESTADO ACTIVO --- */
+/* Forzamos a que el texto brille en amarillo cuando el menú está abierto */
+.navbar-item.active .navbar-text {
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+
+/* SOLUCIÓN: Forzamos que la línea se mantenga expandida al 100% fija si tiene la clase active */
+.navbar-item.active::after {
+  width: 100%;
+  left: 0;
+  background-color: #FFCC00;
+}
+
+/* Tarjeta desplegable de Nosotros (UI Optimizada) */
+.nosotros-dropdown {
+  position: absolute;
+  top: 100%;       /* Se posiciona exactamente debajo del texto */
+  left: 50%;       /* Se mueve al centro del botón padre */
+  transform: translateX(-50%); /* Ajuste perfecto para un centrado matemático exacto */
+  margin-top: 10px; /* Separación sutil del borde superior */
+  
+  /* Mantén aquí tus estilos visuales actuales */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  min-width: 160px; /* Asegura un ancho mínimo cómodo para el botón */
+  z-index: 100;
+}
+
+
+.nosotros-dropdown button {
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+  padding: 6px 12px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.nosotros-dropdown button:hover {
+  color: #0077C8;
+  transform: translateX(2px);
+}
+
+/* Animación de entrada para el dropdown */
+@keyframes dropFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+  .navbar-wrapper {
+    height: 70px;
+  }
+
+  .navbar-container {
+    padding: 10px 15px;
+    height: 70px;
+  }
+
+  .navbar-logo-wrapper {
+    height: 46px;
+  }
+
+  .navbar-menu {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .navbar-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar-item {
+    flex-shrink: 0;
+    padding: 0.4rem 0;
+  }
+
+  .navbar-text {
+    font-size: 13px;
+  }
+
+  .navbar-arrow {
+    font-size: 10px;
+  }
+
+  .nosotros-dropdown {
+    top: 70px;
+    right: 15px;
+    width: auto;
+    border-radius: 8px;
+  }
+}
